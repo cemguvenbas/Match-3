@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Cursor : MonoSingleton<Cursor>
 {
+    private MatchableGrid grid;
     private SpriteRenderer spriteRenderer;
     private Matchable[] selectedMatchable;
     [SerializeField] private Vector2Int verticalStretch = new Vector2Int(1,2);
@@ -23,6 +24,10 @@ public class Cursor : MonoSingleton<Cursor>
         spriteRenderer.enabled = false;
 
         selectedMatchable = new Matchable[2];
+    }
+    private void Start()
+    {
+        grid = (MatchableGrid) MatchableGrid.Instance;
     }
 
     public void SelectFirst(Matchable toSelect)
@@ -46,7 +51,7 @@ public class Cursor : MonoSingleton<Cursor>
             return;
 
         if (SelectedAreAdjacent())
-            print("Swapping!");
+            StartCoroutine(grid.TrySwap(selectedMatchable));
 
         SelectFirst(null);
     }
