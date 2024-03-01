@@ -8,13 +8,8 @@ public class GameManager : MonoBehaviour
     private MatchablePool pool;
     private MatchableGrid grid;
 
-    [SerializeField] private Vector2Int dimensions;
+    [SerializeField] private Vector2Int dimensions = Vector2Int.one;
     [SerializeField] private Text gridOutput;
-
-    private void Awake()
-    {
-        GetReferences();
-    }
 
     private void GetReferences()
     {
@@ -24,54 +19,25 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        pool.PoolObjects(10);
+        GetReferences();
 
-        // Create the grid
-        grid.InitializeGrid(dimensions);
-
-        StartCoroutine(Demo());
+        StartCoroutine(Setup());
     }
 
-    private IEnumerator Demo()
+    private IEnumerator Setup()
     {
-        // display the grid
-        gridOutput.text = grid.ToString();
-        yield return new WaitForSeconds(2);
+        // loading screen
 
-        // take matchables from the pool
-        Matchable m1 = pool.GetPooledObject();
-        m1.gameObject.SetActive(true);
-        m1.gameObject.name = "a";
+        // pool the matchables
+        pool.PoolObjects(dimensions.x * dimensions.y * 2);
 
-        Matchable m2 = pool.GetPooledObject();
-        m2.gameObject.SetActive(true);
-        m2.gameObject.name = "b";
-
-        // put them on the grid
-        grid.PutItemAt(m1, 0, 1);
-        grid.PutItemAt(m2, 2, 3);
-
-        // display the grid
-        gridOutput.text = grid.ToString();
-        yield return new WaitForSeconds(2);
-
-        // swap the matchables
-        grid.SwapItemsAt(0, 1, 2, 3);
-        // display the grid
-        gridOutput.text = grid.ToString();
-        yield return new WaitForSeconds(2);
-
-        // remove the matchables from the grid
-        grid.RemoveItemAt(0, 1);
-        grid.RemoveItemAt(2, 3);
-        // display the grid
-        gridOutput.text = grid.ToString();
-        yield return new WaitForSeconds(2);
-
-        // return the matchables to the pool
-        pool.ReturnObjectToPool(m1);
-        pool.ReturnObjectToPool(m2);
+        // create the grid
+        grid.InitializeGrid(dimensions);
 
         yield return null;
+
+        StartCoroutine(grid.PopulateGrid());
+
+        // removing loading screen
     }
 }

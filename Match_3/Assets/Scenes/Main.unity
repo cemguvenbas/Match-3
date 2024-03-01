@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ba1a1c6f37ff448cbfd62c97e2087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offscreenOffset: {x: 0, y: 9, z: 0}
 --- !u!4 &146555346
 Transform:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 146555344}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -211,7 +212,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363190003}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -291,6 +292,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1950768849937484372, guid: bbd7d3acf54f9094488cd7953272df85, type: 3}
+  howManyTypes: 7
+  sprites:
+  - {fileID: -1883509043, guid: 6ce6635a76a516c489ef432bf03a0143, type: 3}
+  - {fileID: -800394325, guid: 6ce6635a76a516c489ef432bf03a0143, type: 3}
+  - {fileID: 2116576133, guid: 6ce6635a76a516c489ef432bf03a0143, type: 3}
+  - {fileID: -1563732948, guid: 6ce6635a76a516c489ef432bf03a0143, type: 3}
+  - {fileID: -906290848, guid: 6ce6635a76a516c489ef432bf03a0143, type: 3}
+  - {fileID: 3319641, guid: 6ce6635a76a516c489ef432bf03a0143, type: 3}
+  - {fileID: 1021921340, guid: 6ce6635a76a516c489ef432bf03a0143, type: 3}
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.14077096, g: 1, b: 0.032075405, a: 1}
+  - {r: 0, g: 0.048322916, b: 1, a: 1}
+  - {r: 0.61365795, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.96144426, b: 0, a: 1}
+  - {r: 0.6886792, g: 0, b: 0.45452818, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &930304013
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5b5ff6a3234b14ead3321ff3fb1cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimensions: {x: 5, y: 5}
+  dimensions: {x: 7, y: 7}
   gridOutput: {fileID: 363190005}
 --- !u!4 &2003838045
 Transform:

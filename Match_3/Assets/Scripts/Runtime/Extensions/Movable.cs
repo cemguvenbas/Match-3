@@ -46,7 +46,11 @@ public class Movable : MonoBehaviour
 
     private float Easing(float t)
     {
-        // Quadratic easing
-        return t * t;
+        float c1 = 1.70158f,
+              c2 = c1 * 1.525f;
+
+        return t < 0.5f
+            ? (Mathf.Pow(t * 2, 2) * ((c2 + 1) * 2 * t - c2)) / 2
+            : (Mathf.Pow(t * 2 - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2;              
     }
 }
