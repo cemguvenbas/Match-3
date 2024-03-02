@@ -130,17 +130,7 @@ public class MatchableGrid : GridSystem<Matchable>
 
         // if there is not match, swap them back
         if (matches[0] == null && matches[1] == null)
-            StartCoroutine(Swap(copies));
-
-        //if (SwapWasValid())
-        //{
-        //    // resolve match
-        //}
-        //else
-        //{
-        //    StartCoroutine(Swap(copies));
-        //}
-        
+            StartCoroutine(Swap(copies));       
     }
 
     private Match GetMatch(Matchable toMatch)
