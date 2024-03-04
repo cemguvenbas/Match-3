@@ -5,12 +5,14 @@ using UnityEngine;
 public class MatchableGrid : GridSystem<Matchable>
 {
     private MatchablePool pool;
+    private ScoreManager score;
 
     [SerializeField] private Vector3 offscreenOffset;
 
     private void Start()
     {
         pool = (MatchablePool)MatchablePool.Instance;
+        score = ScoreManager.Instance;
     }
 
     public IEnumerator PopulateGrid(bool allowMatches = false)
@@ -118,15 +120,11 @@ public class MatchableGrid : GridSystem<Matchable>
         matches[1] = GetMatch(copies[1]);
 
         if (matches[0] != null)
-        {
-            // resolve match
-            print(matches[0]);
-        }
+            StartCoroutine(score.ResolveMatch(matches[0]));
+
         if (matches[1] != null)
-        {
-            // resolve match
-            print(matches[1]);
-        }
+            StartCoroutine(score.ResolveMatch(matches[1]));
+
 
         // if there is not match, swap them back
         if (matches[0] == null && matches[1] == null)
